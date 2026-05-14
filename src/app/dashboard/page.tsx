@@ -150,6 +150,10 @@ export default function DashboardPage() {
   }, [responses, quotes, profile]);
 
   const feedbackUrl = link ? `${(process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || origin)}/f/${link.slug}` : '';
+  const whatsappText = feedbackUrl
+    ? `Quick anonymous feedback (20 seconds) — this helps us improve future quotes. ${feedbackUrl}`
+    : '';
+  const whatsappUrl = whatsappText ? `https://wa.me/?text=${encodeURIComponent(whatsappText)}` : '';
 
   async function copyFeedbackLink() {
     if (!feedbackUrl) return;
@@ -206,6 +210,29 @@ export default function DashboardPage() {
           </div>
         </div>
       </section>
+
+      {link && (
+        <section className="card wide feedback-loop-card">
+          <div className="section-title">Start collecting feedback</div>
+          <p className="body-text" style={{ marginBottom: 12 }}>Send this after quotes that don’t go ahead. The more this link is used, the clearer your quote-winning insight becomes.</p>
+          <div className="copy-row">
+            <input
+              className="copy-input"
+              value={feedbackUrl}
+              readOnly
+              onClick={(e) => e.currentTarget.select()}
+              aria-label="Customer feedback link"
+            />
+            <button className="btn primary copy-btn" type="button" onClick={copyFeedbackLink}>
+              {copyStatus}
+            </button>
+          </div>
+          <div className="feedback-actions">
+            <a className="btn whatsapp-btn" href={whatsappUrl} target="_blank" rel="noreferrer">Share via WhatsApp</a>
+            <span className="feedback-count">{stats.total} feedback response{stats.total === 1 ? '' : 's'} this month</span>
+          </div>
+        </section>
+      )}
 
       <section className="dashboard-grid">
         <div className="card">
@@ -266,24 +293,6 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {link && (
-        <section className="card wide">
-          <div className="section-title">Your feedback link</div>
-          <p className="body-text" style={{ marginBottom: 10 }}>Copy and send this after quotes that don’t go ahead.</p>
-          <div className="copy-row">
-            <input
-              className="copy-input"
-              value={feedbackUrl}
-              readOnly
-              onClick={(e) => e.currentTarget.select()}
-              aria-label="Customer feedback link"
-            />
-            <button className="btn primary copy-btn" type="button" onClick={copyFeedbackLink}>
-              {copyStatus}
-            </button>
-          </div>
-        </section>
-      )}
     </main>
   );
 }
