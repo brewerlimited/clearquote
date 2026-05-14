@@ -25,6 +25,19 @@ export default function FeedbackPage({ params }: { params: { slug: string } }) {
         .single();
       if (error) setError('This feedback link could not be found.');
       setLink(data);
+
+      if (data?.id && data?.user_id) {
+        const eventKey = `clearquote-link-open-${data.id}`;
+        if (!sessionStorage.getItem(eventKey)) {
+          sessionStorage.setItem(eventKey, '1');
+          fetch('/api/feedback-link-open', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ link_id: data.id, user_id: data.user_id }),
+          }).catch(() => undefined);
+        }
+      }
+
       setLoading(false);
     }
     load();
