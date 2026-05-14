@@ -1,0 +1,1 @@
+Branded ClearQuote favicon and home-screen icons added. Files include favicon.ico, favicon PNGs, apple-touch-icon.png, icon-192.png, icon-512.png, manifest.json and site.webmanifest.
