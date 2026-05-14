@@ -178,6 +178,7 @@ export default function DashboardPage() {
         <div className="nav-links">
           <Link className="btn" href="/quotes">Quotes</Link>
           <Link className="btn" href="/settings">Settings</Link>
+          <Link className="btn" href="/admin">Admin</Link>
           <button className="btn" onClick={signOut}>Sign out</button>
         </div>
       </nav>
