@@ -282,3 +282,99 @@ h1 { font-size: clamp(24px, 4vw, 42px); line-height: 1.08; font-weight: 750; let
   .whatsapp-btn { width: 100%; text-align: center; }
   .feedback-count { width: 100%; text-align: center; }
 }
+
+
+/* Homepage seeded dashboard example */
+.dashboard-example-card {
+  margin-top: 32px;
+  padding: 22px;
+  overflow: hidden;
+}
+
+.example-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.example-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.05;
+  margin: 6px 0 8px;
+  letter-spacing: -0.04em;
+}
+
+.example-pill {
+  flex: 0 0 auto;
+  color: #cbd5e1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  padding: 8px 11px;
+  font-size: 12px;
+}
+
+.example-frame {
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 75% 0%, rgba(139,92,246,0.13), transparent 32%),
+    rgba(7, 11, 24, 0.72);
+  padding: 18px;
+  max-height: 980px;
+  overflow: auto;
+}
+
+.example-frame .page {
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.example-frame .nav {
+  margin-bottom: 22px;
+}
+
+.example-frame .header {
+  padding: 0 0 18px;
+}
+
+.example-frame .header h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.example-frame .card,
+.example-frame .mini-card {
+  box-shadow: none;
+}
+
+.example-frame .dashboard-grid:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  .dashboard-example-card {
+    padding: 16px;
+  }
+
+  .example-header {
+    display: block;
+  }
+
+  .example-pill {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .example-frame {
+    max-height: none;
+    overflow: visible;
+    padding: 12px;
+  }
+
+  .example-frame .nav {
+    display: none;
+  }
+}
